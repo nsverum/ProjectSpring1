@@ -21,6 +21,7 @@
     </thead>
     <tbody>
         <tr th:each="task:${listTasks}">
+
             <td th:text="${task.description}"></td>
             <td th:text="${task.status}"></td>
             <td>

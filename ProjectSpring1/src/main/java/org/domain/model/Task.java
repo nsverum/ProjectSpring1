@@ -11,9 +11,8 @@ public class Task {
     @Column(name = "description")
     private String description;
     @Column(name = "status")
-    // @Enumerated(EnumType.ORDINAL)
-    //private Status status;
-    private int status;
+    @Enumerated(EnumType.ORDINAL)
+    private Status status;
 
     public long getId() {
         return id;
@@ -31,20 +30,13 @@ public class Task {
         this.description = description;
     }
 
-//    public Status getStatus() {
-//        return status;
-//    }
-
-//    public void setStatus(Status status) {
-//        this.status = status;
-//    }
-
-
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
+
+
 }

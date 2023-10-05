@@ -28,7 +28,7 @@ public class TaskController {
 
 
     @PostMapping("/saveTask")
-    public String saveNewEmployee(@ModelAttribute("task") Task task){
+    public String saveNewTask(@ModelAttribute("task") Task task){
         taskService.saveTask(task);
         return "redirect:/";
     }

@@ -7,7 +7,12 @@
 <body>
          <form action="#" th:action="@{/saveTask}" th:object="${task}" method="POST">
             <input type="text" th:field="*{description}" placeholder="Description"/>
-            <input type="text" th:field="*{status}" placeholder="Status"/>
+<!--            <input type="text" th:field="*{status}" placeholder="Status"/>-->
+             <select th:field="*{status}" id="statusSelect">
+                 <option value="IN_PROGRESS">IN_PROGRESS</option>
+                 <option value="DONE">DONE</option>
+                 <option value="PAUSED">PAUSED</option>
+             </select>
             <button type="submit">Save Task</button>
         </form>
 
