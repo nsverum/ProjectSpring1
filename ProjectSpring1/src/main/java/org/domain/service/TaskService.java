@@ -14,15 +14,20 @@ import java.util.Optional;
 
 @Service
 public class TaskService {
-    @Autowired
+
     TaskDAO taskDAO;
+    @Autowired
+    public TaskService(TaskDAO taskDAO) {
+        this.taskDAO = taskDAO;
+    }
+
     public List<Task> getAllTask(){
         return taskDAO.findAll();
     }
     public void saveTask(Task task){
         taskDAO.save(task);
     }
-    public void deleteTask(long id){
+    public void deleteTaskById(long id){
         taskDAO.deleteById(id);
     }
     public Task getTaskById(long id){
