@@ -10,6 +10,20 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TaskController {
+
+    @GetMapping("/testRedirect")
+    public String testRedirect(Model model){
+        return "redirect://xan.com.ua";
+
+    }
+    @GetMapping("/test")
+    public @ResponseBody String test(){
+        return "Hello!";
+    }
+    @PostMapping("/test/another")
+    public @ResponseBody String test(@RequestBody String data){
+        return data + "1";
+    }
     @Autowired
     TaskService taskService;
     @GetMapping("/")

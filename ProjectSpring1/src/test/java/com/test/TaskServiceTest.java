@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = {Application.class, TaskService.class})
+@SpringBootTest(classes = Application.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TaskServiceTest {
     @Autowired
