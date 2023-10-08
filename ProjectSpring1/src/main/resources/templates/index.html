@@ -3,16 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <title>TaskManagerSystem</title>
+<!--    <link rel="stylesheet" href="styles.css">-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        table td {
+            background-color: #f9f9f9;
+        }
+        .container {
+            margin-top: 20px;
+            margin-left: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+       .add-task-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 1px;
+            cursor: pointer;
+
+
+        }
+        .add-task-button:hover {
+            background-color: #0056b3;
+        }  .add-task-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #006400;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 1px;
+            cursor: pointer;
+
+        }
+        table th:nth-child(1), table th:nth-child(2) {
+            color: #fff;
+        }
+        .status-link {
+            color: #fff;
+        }
+                div.total-rows {
+            margin-top: 10px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+                .pagination-links {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .pagination-links a {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 1px;
+            margin-right: 5px; /* Відступ між посиланнями */
+            cursor: pointer;
+        }
+
+        .pagination-links a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<a th:href="@{/showNewTaskForm}">Add Task</a>
+<div class="container">
+    <a class="add-task-button" th:href="@{/showNewTaskForm}">Add Task</a>
+</div>
 <table border="1">
     <thead>
             <th>
-                <a th:href="@{'/page/' + ${currentPage} + '?sortField=description&sortDir=' + ${reverseSortDir}}">Description</a>
+                <a class="status-link" th:href="@{'/page/' + ${currentPage} + '?sortField=description&sortDir=' + ${reverseSortDir}}">Description</a>
             </th>
             <th>
-                <a th:href="@{'/page/' + ${currentPage} + '?sortField=status&sortDir=' + ${reverseSortDir}}">Status</a>
+                <a class="status-link" th:href="@{'/page/' + ${currentPage} + '?sortField=status&sortDir=' + ${reverseSortDir}}">Status</a>
             </th>
 
             <th>
@@ -34,17 +132,17 @@
 <div>
     Total Rows : [[${totalItems}]]
 </div>
-<div>
+<div class="total-rows">
     <span th:each="i : ${#numbers.sequence(1,totalPages)}">
         <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
         <a th:unless="${currentPage != i}">[[${i}]]</a>
     </span>
 </div>
-<div>
+<div class="pagination-links">
     <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
     <a th:unless="${currentPage < totalPages}">Next</a>
 </div>
-<div>
+<div class="pagination-links">
     <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >Last</a>
     <a th:unless="${currentPage < totalPages}">Last</a>
 </div>
